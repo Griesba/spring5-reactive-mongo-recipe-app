@@ -6,7 +6,7 @@ import guru.springframework.repositories.RecipeRepository;
 import guru.springframework.repositories.UnitOfMeasureRepository;
 import guru.springframework.repositories.reactive.CategoryReactiveRepository;
 import guru.springframework.repositories.reactive.RecipeReactiveRepository;
-import guru.springframework.repositories.reactive.UnitOfMeasureReativeRepository;
+import guru.springframework.repositories.reactive.UnitOfMeasureReactiveRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
@@ -32,7 +32,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
     private final UnitOfMeasureRepository unitOfMeasureRepository;
 
     @Autowired
-    private UnitOfMeasureReativeRepository unitOfMeasureReativeRepository;
+    private UnitOfMeasureReactiveRepository unitOfMeasureReactiveRepository;
     @Autowired
     RecipeReactiveRepository recipeReactiveRepository;
     @Autowired
@@ -54,7 +54,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         log.debug("Loading Bootstrap Data");
 
         log.error("#######");
-        log.error("count unitOfMeasure: " + unitOfMeasureReativeRepository.count().block().toString());
+        log.error("count unitOfMeasure: " + unitOfMeasureReactiveRepository.count().block().toString());
         log.error("count unitOfMeasure: " + categoryReactiveRepository.count().block().toString());
         log.error("count unitOfMeasure: " + recipeReactiveRepository.count().block().toString());
 

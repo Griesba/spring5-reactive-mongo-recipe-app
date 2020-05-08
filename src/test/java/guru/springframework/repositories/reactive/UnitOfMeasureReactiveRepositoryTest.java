@@ -12,14 +12,14 @@ import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @DataMongoTest
-public class UnitOfMeasureReativeRepositoryTest {
+public class UnitOfMeasureReactiveRepositoryTest {
 
     @Autowired
-    UnitOfMeasureReativeRepository unitOfMeasureReativeRepository;
+    UnitOfMeasureReactiveRepository unitOfMeasureReactiveRepository;
 
     @Before
     public void setUp() throws Exception {
-        unitOfMeasureReativeRepository.deleteAll();
+        unitOfMeasureReactiveRepository.deleteAll();
     }
 
     @Test
@@ -27,10 +27,10 @@ public class UnitOfMeasureReativeRepositoryTest {
         UnitOfMeasure unitOfMeasure = new UnitOfMeasure();
         unitOfMeasure.setDescription("CM");
 
-        UnitOfMeasure savedUom = unitOfMeasureReativeRepository.save(unitOfMeasure).block();
+        UnitOfMeasure savedUom = unitOfMeasureReactiveRepository.save(unitOfMeasure).block();
 
         assertNotNull(savedUom);
-        assertEquals(1, unitOfMeasureReativeRepository.count().block().intValue());
+        assertEquals(1, unitOfMeasureReactiveRepository.count().block().intValue());
         assertEquals("CM", savedUom.getDescription());
     }
 }
