@@ -53,11 +53,6 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         recipeRepository.saveAll(getRecipes());
         log.debug("Loading Bootstrap Data");
 
-        log.error("#######");
-        log.error("count unitOfMeasure: " + unitOfMeasureReactiveRepository.count().block().toString());
-        log.error("count unitOfMeasure: " + categoryReactiveRepository.count().block().toString());
-        log.error("count unitOfMeasure: " + recipeReactiveRepository.count().block().toString());
-
         Flux<Category> categoryFlux = categoryReactiveRepository.findAll();
         categoryFlux.subscribe(category -> log.error("->" + category.getDescription()));
 
