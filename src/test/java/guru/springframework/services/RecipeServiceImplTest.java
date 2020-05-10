@@ -109,10 +109,10 @@ public class RecipeServiceImplTest {
         //given
         String idToDelete = "2";
 
-        //when
-        recipeService.deleteById(idToDelete);
+        when(recipeReactiveRepository.deleteById(anyString())).thenReturn(Mono.empty());
 
-        //no 'when', since method has void return type
+        //when
+        recipeService.deleteById(idToDelete).block();
 
         //then
         verify(recipeReactiveRepository, times(1)).deleteById(anyString());
