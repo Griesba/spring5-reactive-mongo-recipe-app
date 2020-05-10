@@ -52,10 +52,6 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         loadUom();
         recipeRepository.saveAll(getRecipes());
         log.debug("Loading Bootstrap Data");
-
-        Flux<Category> categoryFlux = categoryReactiveRepository.findAll();
-        categoryFlux.subscribe(category -> log.error("->" + category.getDescription()));
-
     }
 
     private void loadCategories(){
